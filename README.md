@@ -75,7 +75,7 @@ You may wish to modify the   MODEL_BASE_NAME if you are doing anything other tha
 
 You might need to change the path to the environment you created if you are using conda and not mamba
 
-Close the script and submit an sbatch job:
+Close the script and submit as sbatch job:
 
 ```
 sbatch 00_trainModel_n2v.sh

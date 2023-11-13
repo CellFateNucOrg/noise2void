@@ -2,7 +2,7 @@
 Scripts for performing noise2void denoising of microscopy images 
 
 ## Installing environment
-First be sure you have conda or [mamba](https://mamba.readthedocs.io/en/latest/mamba-installation.html)) installed. I will give the commands with mamba, but you can simply subsittute the word conda for mamba.
+First be sure you have conda or [mamba](https://mamba.readthedocs.io/en/latest/mamba-installation.html) installed. I will give the commands with mamba, but you can simply subsittute the word conda for mamba.
 
 To be sure we can install the gpu enabled versions of software we should ssh into the gpu server izbdelhi.
 Then create an interactive job with the gpu:

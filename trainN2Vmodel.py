@@ -67,7 +67,7 @@ def trainModel_n2v(image_dir,channel_name, model_base_name='n2v_3D_CREST_'):
 	print(sorted(list(history.history.keys())))
 	plt.figure(figsize=(16,5))
 	plot_history(history,['loss','val_loss'])
-	plt.savefig(image_dir + '/n2v_denoise/training/' + channel_name +  '/trianingValidationLoss_' + model_name + '.png')
+	plt.savefig(image_dir + '/n2v_denoise/training/' + channel_name +  '/trainingValidationLoss_' + model_name + '.png')
 
 	#Export Model in BioImage ModelZoo Forma
 	model.export_TF(name='Noise2Void-3DCREST-'+channel_name, 

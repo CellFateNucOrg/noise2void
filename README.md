@@ -78,7 +78,27 @@ Training should take 2-3 hours
 When training is finished, examine the trainingValidationLoss_n2v_3D_CREST_channelName.png file in the n2v_denoise/training/channelName directory. It should look like this:
 ![training validation](https://github.com/CellFateNucOrg/noise2void/blob/main/n2v_denoise/training/green/trainingValidationLoss_n2v_3D_CREST_green.png?raw=true)
 
-### 
+The blue and orange lines should converge. if they do not you can increase the number of epochs you use for training by modifying the **trainN2Vmodel.py** script and the repeat the training.
+
+### Denoising
+Once you have finished training models for all the channels you can use them to denoise the rest of the images of that type.
+
+ssh into izbdelhi so you can use the GPU.
+
+Open the **01_denoise_n2v.sh** script and modify the path to the directory with the .nd2 format images you want to denoise (IMAGE_DIR), and the path to the models you trained (MODEL_DIR). this could be in a subdirectory of the IMAGE_DIR, of if you repeatedly image the same fluorescent protein you can use a model you already trained (which is why this is a separate variable).
+Use the same model base name as you used in the training.
+CHANNEL_LIST should include all the channels you trained models for e.g. (green red). they must be in the same order they appear in your image. 
+
+You might need to change the path to activate your environment if you are using conda and not mamba.
+
+Close the script and submit as sbatch job:
+'''
+sbatch 01_denoise_n2v.sh
+'''
+
+The denoised images will be in the **n2v_denoise/denoised** folder
+
+
 
 
 

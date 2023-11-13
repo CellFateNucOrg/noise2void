@@ -61,9 +61,8 @@ Every new type of image with different type of flourophore and distribution requ
 ### Setup for training
 
 Before strating you need to interactively choose a region of a single slice of one of your images with the typical signal and background. The **getTrainingRegion.ijm** macro will help you do that in fiji.
-Open one of your images, go to a central z-slice and then run the macro: drag it to into fiji and it will open the code window, then click "run". the macro will enhance contrast and then create a square of the right size which you should move to a region that contains your signal of interest and background.
-Once you have selected the region and click "continue?", the macro will separate channels and create tiffs of this square for training. Save them with an *_\<channelName\>.tif* suffix.
-(where *\<channelName\>* is e.g. green)
+Open one of your images, go to a central z-slice and then run the macro: drag the macro file into fiji and it will open the code window, then click "run". the macro will enhance contrast and then create a square of the right size which you should move to a region that contains your signal of interest and background (don't change the size of the square).
+Once you have selected the region and click "continue", the macro will separate channels and create tiffs of this square for training. Save them with an *_\<channelName\>.tif* suffix (where *\<channelName\>* is e.g. green).
 
 Go to the directory where you have your images and create a directory for the training images, e.g. if you have green and red channels:
 

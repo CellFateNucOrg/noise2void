@@ -42,7 +42,17 @@ pip install n2v jupyter
 
 There may be some packages i have forgotten - complete docs when try new installation. Try to
 
-when finished, cancel the gpu job on the server (using scancel jobid).
+When finished, cancel the gpu job on the server (using scancel jobid).
+
+## Pulling scripts from github
+Change directory (cd) and go to the directory with the images. Then initiate a github repo, set the origin to this repository and fetch the scripts.
+
+```
+git init
+git remote add origin git@github.com:CellFateNucOrg/noise2void.git
+git fetch
+git checkout -t origin/main
+```
 
 ## Train model
 

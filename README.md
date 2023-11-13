@@ -13,7 +13,7 @@ salloc -w izbdelhi --mem 16GB --time 1:00:00 --gres=gpu:1
 
 The installation essentially uses the instructions from the [n2v](https://github.com/juglab/n2v) github repository and [tensorflow](https://www.tensorflow.org/install/pip) page, as well as some other packages.
 
-Create an mamba environment:
+Create a mamba environment:
 
 ```
 mamba create -n "n2v" python=3.9

@@ -93,9 +93,11 @@ Once you have finished training models for all the channels you can use them to 
 
 ssh into izbdelhi so you can use the GPU.
 
-Open the **01_denoise_n2v.sh** script and modify the path to the directory with the .nd2 format images you want to denoise (IMAGE_DIR), and the path to the models you trained (MODEL_DIR). this could be in a subdirectory of the IMAGE_DIR, of if you repeatedly image the same fluorescent protein you can use a model you already trained (which is why this is a separate variable).
+Open the **01_denoise_n2v.sh** script and modify the path to the directory with the .nd2 format images you want to denoise (IMAGE_DIR), and the path to the models you trained (MODEL_DIR). This could be in a subdirectory of the IMAGE_DIR, or if you repeatedly image the same fluorescent protein you can use a model you already trained (which is why this is a separate variable).
+
 Use the same model base name as you used in the training.
-CHANNEL_LIST should include all the channels you trained models for e.g. (green red). they must be in the same order they appear in your image. 
+
+CHANNEL_LIST should include all the channels you trained models for e.g. (green red). The list must be in the same order the channels appear in your image. 
 
 You might need to change the path to activate your environment if you are using conda and not mamba.
 

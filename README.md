@@ -6,34 +6,39 @@ First be sure you have conda or [mamba](https://mamba.readthedocs.io/en/latest/m
 
 To be sure we can install the gpu enabled versions of software we should ssh into the gpu server izbdelhi.
 Then create an interactive job with the gpu:
-'''
+
+```
 salloc -w izbdelhi --mem 16GB --time 1:00:00 --gres=gpu:1
-'''
+```
 
 The installation essentially uses the instructions from the [n2v](https://github.com/juglab/n2v) github repository and [tensorflow](https://www.tensorflow.org/install/pip) page, as well as some other packages.
 
 Create an mamba environment:
-'''
+
+```
 mamba create -n "n2v" python=3.9
 mamba activate n2v1
 mamba install -c conda-forge nd2 scikit-image
-'''
+```
 
 Install tensorflow with pip
-'''
+
+```
 python3 -m pip install tensorflow[and-cuda]
-'''
+```
 
 Make the path available as per tensorflow docs:
-'''
+
+```
 mkdir -p $CONDA_PREFIX/etc/conda/activate.d
 echo 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$CONDA_PREFIX/lib/' > $CONDA_PREFIX/etc/conda/activate.d/env_vars.sh
-'''
+```
 
 Install some n2v and some other packages with pip:
-'''
+
+```
 pip install n2v jupyter
-'''
+```
 
 There may be some packages i have forgotten - complete docs when try new installation. Try to
 
@@ -51,10 +56,12 @@ Once you have selected the region and click "continue?", the macro will separate
 (where channelName is e.g. green)
 
 Go to the directory where you have your images and create a directory for the training images, e.g. if you have green and red channels:
-'''
+
+```
 mkdir -p n2v_denoise/training/green
 mkdir -p n2v_denoise/training/red
-'''
+```
+
 Place the images created with the fiji macro into their respective directories
 
 ### Training
@@ -69,9 +76,10 @@ You may wish to modify the   MODEL_BASE_NAME if you are doing anything other tha
 You might need to change the path to the environment you created if you are using conda and not mamba
 
 Close the script and submit an sbatch job:
-'''
+
+```
 sbatch 00_trainModel_n2v.sh
-'''
+```
 
 Training should take 2-3 hours
 
@@ -92,9 +100,12 @@ CHANNEL_LIST should include all the channels you trained models for e.g. (green 
 You might need to change the path to activate your environment if you are using conda and not mamba.
 
 Close the script and submit as sbatch job:
-'''
+
+```
 sbatch 01_denoise_n2v.sh
-'''
+```
+
+
 
 The denoised images will be in the **n2v_denoise/denoised** folder
 

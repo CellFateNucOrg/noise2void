@@ -53,6 +53,7 @@ git remote add origin git@github.com:CellFateNucOrg/noise2void.git
 git fetch
 git checkout -t origin/main
 ```
+This may not work. in which case delete the .git folder. then create a new folder by cloning the repository adn then move the images into that folder
 
 ## Train model
 

@@ -8,7 +8,7 @@ To be sure we can install the gpu enabled versions of software we should ssh int
 Then create an interactive job with the gpu:
 
 ```
-salloc -w izbdelhi --mem 16GB --time 1:00:00 --gres=gpu:1
+salloc -w izbdelhi --mem 500GB --time 5:00:00 --gres=gpu:1
 ```
 
 The installation essentially uses the instructions from the [n2v](https://github.com/juglab/n2v) github repository and [tensorflow](https://www.tensorflow.org/install/pip) page, as well as some other packages.
@@ -103,6 +103,12 @@ Once you have finished training models for all the channels you can use them to 
 
 ssh into izbdelhi so you can use the GPU.
 
+Request resouces on a compute node:
+
+```
+salloc -w izbdelhi --mem 256GB --time 5:00:00 --gres=gpu:1
+```
+
 Open the **01_denoise_n2v.sh** script and modify the path to the directory with the .nd2 format images you want to denoise (IMAGE_DIR), and the path to the models you trained (MODEL_DIR). This could be in a subdirectory of the IMAGE_DIR, or if you repeatedly image the same fluorescent protein you can use a model you already trained (which is why this is a separate variable).
 
 Use the same model base name as you used in the training.
@@ -116,8 +122,6 @@ Close the script and submit as sbatch job:
 ```
 sbatch 01_denoise_n2v.sh
 ```
-
-
 
 The denoised images will be in the *n2v_denoise/denoised* folder
 

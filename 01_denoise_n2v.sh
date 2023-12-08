@@ -8,7 +8,7 @@ MODEL_DIR=/mnt/external.data/MeisterLab/jsemple/microscopy/20230907_941-9_SMCGFP
 MODEL_BASE_NAME=n2v_3D_CREST_
 CHANNEL_LIST=(green)
 
-source $HOME/miniforge3/bin/activate n2v1
+source $HOME/miniforge3/bin/activate n2v
 
 # use some expression to get list of files to process 
 FILE_LIST=(`ls *.nd2 | grep -v _bf.nd2`)

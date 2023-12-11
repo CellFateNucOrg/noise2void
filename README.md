@@ -17,7 +17,7 @@ Create a mamba environment:
 
 ```
 mamba create -n "n2v" python=3.9
-mamba activate n2v1
+mamba activate n2v
 mamba install -c conda-forge nd2 scikit-image
 ```
 

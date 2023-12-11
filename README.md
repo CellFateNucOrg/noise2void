@@ -21,10 +21,10 @@ mamba activate n2v
 mamba install -c conda-forge nd2reader scikit-image jupyter
 ```
 
-Install tensorflow with pip (cuda should already be installed on izbdelhi
+Install tensorflow with pip (cuda and tensorflow need to be compatible with gpu software on server. check what version is installed using 'nvidia-smi' command. Look up compatible versions here: https://www.tensorflow.org/install/source#tested_build_configurations
 
 ```
-pip install tensorflow==2.13.0
+pip install tensorflow==2.13.0 cuda-python==11.8
 ```
 
 Make the path available as per tensorflow docs:

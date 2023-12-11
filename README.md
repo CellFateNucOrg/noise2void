@@ -24,7 +24,7 @@ mamba install -c conda-forge nd2reader scikit-image jupyter
 Install tensorflow with pip (cuda should already be installed on izbdelhi
 
 ```
-pip install tensorflow
+pip install tensorflow==2.13.0
 ```
 
 Make the path available as per tensorflow docs:

@@ -18,13 +18,13 @@ Create a mamba environment:
 ```
 mamba create -n "n2v" python=3.9
 mamba activate n2v
-mamba install -c conda-forge nd2 scikit-image
+mamba install -c conda-forge nd2reader scikit-image jupyter
 ```
 
 Install tensorflow with pip
 
 ```
-python3 -m pip install tensorflow[and-cuda]
+python -m pip install tensorflow[and-cuda]
 ```
 
 Make the path available as per tensorflow docs:
@@ -34,10 +34,10 @@ mkdir -p $CONDA_PREFIX/etc/conda/activate.d
 echo 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$CONDA_PREFIX/lib/' > $CONDA_PREFIX/etc/conda/activate.d/env_vars.sh
 ```
 
-Install some n2v and some other packages with pip:
+Install n2v with pip
 
 ```
-pip install n2v jupyter
+pip install n2v
 ```
 
 There may be some packages i have forgotten - complete docs when try new installation. Try to

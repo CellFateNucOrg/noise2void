@@ -21,10 +21,10 @@ mamba activate n2v
 mamba install -c conda-forge nd2reader scikit-image jupyter
 ```
 
-Install tensorflow with pip
+Install tensorflow with pip (cuda should already be installed on izbdelhi
 
 ```
-python -m pip install tensorflow[and-cuda]
+pip install tensorflow
 ```
 
 Make the path available as per tensorflow docs:

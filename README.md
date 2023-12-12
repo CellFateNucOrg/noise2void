@@ -5,44 +5,47 @@ Scripts for performing noise2void denoising of microscopy images
 First be sure you have conda or [mamba](https://mamba.readthedocs.io/en/latest/mamba-installation.html) installed. I will give the commands with mamba, but you can simply subsittute the word conda for mamba.
 
 To be sure we can install the gpu enabled versions of software we should ssh into the gpu server izbdelhi.
-Then create an interactive job with the gpu:
-
-```
-salloc -w izbdelhi --mem 16GB --time 1:00:00 --gres=gpu:1
-```
 
 The installation essentially uses the instructions from the [n2v](https://github.com/juglab/n2v) github repository and [tensorflow](https://www.tensorflow.org/install/pip) page, as well as some other packages.
 
-Create a mamba environment:
+Create a mamba environment and install some packages for dealing with images:
 
 ```
 mamba create -n "n2v" python=3.9
 mamba activate n2v
-mamba install -c conda-forge nd2reader scikit-image jupyter
+mamba install -c conda-forge nd2reader scikit-image
 ```
 
 Install tensorflow with pip (cuda and tensorflow need to be compatible with gpu software on server. check what version is installed using 'nvidia-smi' command. Look up compatible versions here: https://www.tensorflow.org/install/source#tested_build_configurations
 
 ```
-pip install tensorflow==2.13.0 cuda-python==11.8
+mamba install -c conda-forge cudatoolkit=11.8.0
+python3 -m pip install nvidia-cudnn-cu11==8.6.0.163 tensorflow[and-cuda]==2.13.0
 ```
 
 Make the path available as per tensorflow docs:
 
 ```
 mkdir -p $CONDA_PREFIX/etc/conda/activate.d
-echo 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$CONDA_PREFIX/lib/' > $CONDA_PREFIX/etc/conda/activate.d/env_vars.sh
+echo 'CUDNN_PATH=$(dirname $(python -c "import nvidia.cudnn;print(nvidia.cudnn.__file__)"))' > $CONDA_PREFIX/etc/conda/activate.d/env_vars.sh
+echo 'export LD_LIBRARY_PATH=$CUDNN_PATH/lib:$CONDA_PREFIX/lib/:$LD_LIBRARY_PATH' >> $CONDA_PREFIX/etc/conda/activate.d/env_vars.sh
+source $CONDA_PREFIX/etc/conda/activate.d/env_vars.sh
 ```
+
+Verify install worked using the command:
+
+```
+python3 -c "import tensorflow as tf; print(tf.config.list_physical_devices('GPU'))"
+```
+
+This should return a tensor, something like: "[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:1', device_type='GPU')]". ignore the warnings about AVX2 and tensorrt.
+
 
 Install n2v with pip
 
 ```
 pip install n2v
 ```
-
-There may be some packages i have forgotten - complete docs when try new installation. Try to
-
-When finished, cancel the gpu job on the server (using scancel jobid).
 
 ## Pulling scripts from github
 Change directory (cd) and go to the directory with the images. Then initiate a github repo, set the origin to this repository and fetch the scripts.

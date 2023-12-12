@@ -124,5 +124,5 @@ The denoised images will be in the *n2v_denoise/denoised* folder
 
 
 # IMPORTANT!
-Use can use the denoised image to better detect objects and create masks. But remember that then any intensity measurements should be performed on the raw images!!!
+You can use the denoised image to better detect objects and create masks. But remember that then any intensity measurements should be performed on the raw images!!!
 

@@ -1,5 +1,5 @@
 # noise2void
-Scripts for performing noise2void denoising of microscopy images 
+Scripts for performing noise2void denoising of microscopy images, on the IZB cluster. Heavily based on an python notebook from Lucien Hinderling (Pertz group) and the original [n2v](https://github.com/juglab/n2v) example scripts on the official github repository.
 
 ## Installing environment
 First be sure you have conda or [mamba](https://mamba.readthedocs.io/en/latest/mamba-installation.html) installed. I will give the commands with mamba, but you can simply subsittute the word conda for mamba.

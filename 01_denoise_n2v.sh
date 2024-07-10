@@ -11,7 +11,7 @@ CHANNEL_LIST=(green)
 source $HOME/miniforge3/bin/activate n2v
 
 # use some expression to get list of files to process 
-FILE_LIST=(`ls *.nd2 | grep -v _bf.nd2`)
+FILE_LIST=(`ls ${IMAGE_DIR}/*.nd2 | grep -v _bf.nd2`)
 
 for IMAGE_NAME in ${FILE_LIST[@]}
 do

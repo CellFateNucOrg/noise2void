@@ -9,7 +9,7 @@ from n2v.utils.n2v_utils import manipulate_val_data
 from n2v.internals.N2V_DataGenerator import N2V_DataGenerator
 from matplotlib import pyplot as plt
 import urllib
-import nd2
+#import nd2
 from nd2reader import ND2Reader
 import os
 import re
@@ -118,7 +118,7 @@ def main():
 	'''main'''
 	args = get_args()
 	image_dir=args.image_dir
-	image_name=args.image_name
+	image_name=os.path.basename(args.image_name)
 	model_dir=args.model_dir
 	model_base_name=args.model_base_name
 	channel_list=args.channel_list
@@ -144,5 +144,5 @@ if __name__=='__main__':
 # model_name = 'n2v_3D_CREST_green'
 # model_dir = '/mnt/external.data/MeisterLab/jsemple/'+'/n2v_denoise/training/models/'
 # image_name='C1-SAMS-3_L1s_0014_green.tif'
-# channel_list=["green","red"]
-#channel_list=["green","red"]
+# channel_list=["red","green"]
+

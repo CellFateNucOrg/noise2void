@@ -1,6 +1,6 @@
 #!/bin/bash
 #SBATCH --time=0-05:00:00
-#SBATCH --mem 256GB
+#SBATCH --mem 32GB
 #SBATCH --gres=gpu:1
 
 IMAGE_DIR=/mnt/external.data/MeisterLab/jsemple/microscopy/20230907_941-9_SMCGFP1_HS

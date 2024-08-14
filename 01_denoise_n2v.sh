@@ -1,12 +1,12 @@
 #!/bin/bash
 #SBATCH --time=0-05:00:00
-#SBATCH --mem 256GB
+#SBATCH --mem 32GB
 #SBATCH --gres=gpu:1
 
 IMAGE_DIR=/mnt/external.data/MeisterLab/jsemple/microscopy/20230907_941-9_SMCGFP1_HS
 MODEL_DIR=/mnt/external.data/MeisterLab/jsemple/microscopy/20230907_941-9_SMCGFP1_HS/n2v_denoise/training/models
 MODEL_BASE_NAME=n2v_3D_CREST_
-CHANNEL_LIST=(green)
+CHANNEL_LIST=(red green)
 
 source $HOME/miniforge3/bin/activate n2v
 

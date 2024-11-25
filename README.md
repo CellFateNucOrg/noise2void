@@ -1,5 +1,5 @@
 # noise2void
-Scripts for denoising multi-dimensional (up to 5D) microscopy images with noise2void. Based on scripts by Lucien Hinderling (Pertz group) and example scripts in the [noise2void](https://github.com/juglab/n2v) respository. Instructions below are based on a [previous fork](https://github.com/CellFateNucOrg/noise2void/tree/jenny_v1) with scripts to denoise 3D images.
+Scripts for denoising multi-dimensional (up to 5D) microscopy images with noise2void. Based on scripts by Lucien Hinderling (Pertz group) and example scripts in the [noise2void](https://github.com/juglab/n2v) respository. Instructions below are based on a [previous fork](https://github.com/CellFateNucOrg/noise2void/tree/jenny_v1) with scripts for denoising 3D images.
 
 ## Installing environment
 First be sure you have conda or [mamba](https://mamba.readthedocs.io/en/latest/mamba-installation.html) installed. I will give the commands with mamba, but you can simply subsittute the word conda for mamba.

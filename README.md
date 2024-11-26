@@ -45,7 +45,7 @@ git remote add origin git@github.com:CellFateNucOrg/noise2void.git
 git fetch
 git checkout -t origin/dario_v2
 ```
-In case this does not work, delete the .git folder and clone the repository from github.
+In case this does not work, delete the .git folder and clone the repository from github instead.
 
 ## Train a model
 Ideally, you should train an individual model for each unique combination of promoter, gene of interest, and fluorophore. You should also train a separate model whenever you image a strain with (significantly) changed acquisition parameters.

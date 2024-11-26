@@ -61,7 +61,7 @@ To start the training, you have to provide at least one sample slice from one of
 Next run the **getTrainingRegion.ijm** macro and select a representative area of your image, containing both signal and some background. You should not change the size of the selection square nor adjust brightness and contrast. After you confirming your selection, the macro will create a copy of the selected area for each channel. Save those images with a *_<channel_name>.tif* suffix into the correct *train_imgs* folder.
 
 ### Training
-Depending on whether your training images 2D or 3D files, open the *N2Vtrain2D.sh* or *N2Vtrain*D.sh* script. On macOS, you can open *.sh* files with TextEdit and on Windows with Notepad.
+Depending on whether your training images 2D or 3D files, open the *N2Vtrain2D.sh* or *N2Vtrain3D.sh* script. On macOS, you can open *.sh* files with TextEdit and on Windows using Notepad.
 
 In the *.sh* file you shold adjust the following parameters: *MODEL_BASE_DIR* should be the path to your model (which contains the folders for the individual channels). *CHANNELS* should be a space-separated list with all the channels you want to train. The names of these channels should be identical with the folders inside the *MODEL_BASE_DIR* folder.
 

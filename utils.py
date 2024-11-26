@@ -286,7 +286,7 @@ def correct_img(raw_img, flat_img, dark_img, roi=None, bits=12, dtype=np.float16
         Flat-field image.
     dark_image : numpy.ndarray or image
         Dark image.
-    roi : (4) sequence of ints,optional, default None
+    roi : (4) sequence of ints, optional, default None
         ROI of the input image. Integers should indicate the distance in pixels from the left, right, top, and bottom, respectively.
     bits : int, optional, default 12
         Bit depth of the output image.

@@ -81,7 +81,7 @@ Next ssh into izblisbon, navigate to the *N2V* folder, and submit the script:
 sbatch N2Vdenoise.sh
 ```
 
-After the denoising is finished, you will find the denoised images in the */N2V/denoised* sub-directory of the *IMG_PATH*.
+After the denoising is finished, you will find the denoised images in the *N2V/denoised* sub-directory of the *IMG_PATH*.
 
 # IMPORTANT!
 You can use the denoised image to better detect objects and create masks. But remember that then any intensity measurements should be performed on the raw images!!!

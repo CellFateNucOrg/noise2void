@@ -66,7 +66,7 @@ In the *.sh* file you shold adjust the following parameters: *MODEL_BASE_DIR* sh
 After saving the script, ssh into the *izblisbon* node and navigate to the *N2V* folder. Then submit the scripts as an *sbatch* job:
 ```
 sbatch N2Vtrain2D.sh # if your training images are 2D
-sbatch N2Vtrain3.sh # if your training images are 2D
+sbatch N2Vtrain3D.sh # if your training images are 3D
 ```
 
 Training should take 2-3 hours

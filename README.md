@@ -47,7 +47,7 @@ git checkout -t origin/dario_v2
 ```
 In case this does not work, delete the .git folder and clone the repository from github instead.
 
-## Train a model
+## Training
 Ideally, you should train an individual model for each unique combination of promoter, gene of interest, and fluorophore. You should also train a separate model whenever you image a strain with (significantly) changed acquisition parameters.
 
 ### Set up directories
@@ -60,7 +60,7 @@ To start the training, you have to provide at least one sample slice from one of
 
 Next run the **getTrainingRegion.ijm** macro and select a representative area of your image, containing both signal and some background. You should not change the size of the selection square nor adjust brightness and contrast. After you confirming your selection, the macro will create a copy of the selected area for each channel. Save those images with a *_<channel_name>.tif* suffix into the correct *train_imgs* folder.
 
-### Training
+### Train a model
 Depending on whether your training images 2D or 3D files, open the *N2Vtrain2D.sh* or *N2Vtrain3D.sh* script. On macOS, you can open *.sh* files with TextEdit and on Windows using Notepad.
 
 In the *.sh* file you shold adjust the following parameters: *MODEL_BASE_DIR* should be the path to your model (which contains the folders for the individual channels). *CHANNELS* should be a space-separated list with all the channels you want to train. The names of these channels should be identical with the folders inside the *MODEL_BASE_DIR* folder.
@@ -73,7 +73,7 @@ sbatch N2Vtrain3D.sh # if your training images are 3D
 
 The training will usually take between 2 and 3 hours. Afterwards, you can examine the output plot, named *\<model>_\<channel>_plot.png* in the channel sub-folder of the model directory. The blue and orange lines should flatten and converge towards the end of the training. If this is not the case, you can increase the number of epochs in the *N2Vtrain2D.py* or *N2Vtrain3D.py* script and the repeat the training. However, doing so will not always make that big of a difference. Moreover, even if the plot does not look great, quite often the denoising will still yield a good result.
 
-### Denoising
+## Denoising
 Once the training has finished (and the plots look fine), you can start denoising your raw images. For this, open the *N2Vdenoise.sh* file. Modify *IMG_DIR*, which should point to the folder containing your raw images. *MODEL_BASE_DIR* and *CHANNEL_LIST* should be the same as in the corresponding *N2Vtrain2D.sh* or *N2Vtrain3D.sh* script.
 
 Next ssh into izblisbon, navigate to the *N2V* folder, and submit the script:

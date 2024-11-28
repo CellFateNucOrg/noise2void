@@ -48,8 +48,6 @@ git checkout -t origin/dario_v2
 In case this does not work, delete the .git folder and clone the repository from github instead.
 
 ## Training
-Ideally, you should train an individual model for each unique combination of promoter, gene of interest, and fluorophore. You should also train a separate model whenever you image a strain with (significantly) changed acquisition parameters.
-
 ### Set up directories
 Before you start the training, set up the directories for your model. Personally, I sort all of my images into a parent folder for each strain with sub-folders for each imaging session. Inside the parent directory, I then create a a folder for the model to be trained. This folder should contain a sub-folder for each channel you want to train (for example, named *red* and *green*), each of which should contain sub-folder named *train_imgs*. 
 

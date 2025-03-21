@@ -44,12 +44,13 @@ def trainModel_n2v(image_dir,channel_name, model_base_name='n2v_3D_CREST_'):
 	# Patches are created so they do not overlap.
 	# (Note: this is not the case if you specify a number of patches. See the docstring for details!)
 	# Non-overlapping patches enable us to split them into a training and validation set.
-	X = patches[:128]
-	X_val = patches[128:]
+	patches_tot = len(patches)
+	X = patches[:int(patches_tot * 0.8)]
+	X_val = patches[int(patches_tot * 0.8):]
 	# You can increase "train_steps_per_epoch" to get even better results at the price of longer computation. 
 	config = N2VConfig(X, unet_kern_size=3, 
 					   train_steps_per_epoch=200,train_epochs=150, train_loss='mse', batch_norm=True, 
-					   train_batch_size=4, n2v_perc_pix=0.198, n2v_patch_shape=(32, 64, 64), 
+					   train_batch_size=32, n2v_perc_pix=0.198, n2v_patch_shape=(32, 64, 64), 
 					   n2v_manipulator='uniform_withCP', n2v_neighborhood_radius=5)
 
 	# Let's look at the parameters stored in the config-object.

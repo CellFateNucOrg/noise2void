@@ -1,6 +1,6 @@
 #!/bin/bash
 #SBATCH --time=1-0:00:00
-#SBATCH --mem 128GB
+#SBATCH --mem 64GB
 #SBATCH --ntasks=8
 #SBATCH --gres=gpu:1
 

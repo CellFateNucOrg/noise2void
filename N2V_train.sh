@@ -3,7 +3,7 @@
 #SBATCH --mem 64GB
 #SBATCH --gres=gpu:rtx6000:1
 
-MODEL_BASE_DIR=/mnt/external.data/MeisterLab/Dario/Imaging/Code/N2V/myo3_halo
+MODEL_BASE_DIR=
 CHANNELS=(red green)
 
 source $HOME/miniforge3/bin/activate n2v

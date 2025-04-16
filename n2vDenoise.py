@@ -16,6 +16,7 @@ def split_nd(img_dir, img_name, channel_list, model_base_dir, project=True):
 		makedirs(denoised_dir, exist_ok=True) # Make a directory for the denoised images if it does not exist yet
 	img = join(img_dir, img_name)
 	dims = ''.join([i for i in ['T', 'C'] if BioImage(img).dims[i][0] > 1])
+	dims = dims if dims else 'C'
 	tcz_path = split_stack(img, dims=dims, keep_img=True) # Split images by time point and/or channel
 	temp_path = join(denoised_dir, f'{img_name[:img_name.rfind(".")]}_temp.zarr')
 	root = zarr.group(store=temp_path)
@@ -25,6 +26,7 @@ def split_nd(img_dir, img_name, channel_list, model_base_dir, project=True):
 		for array in arrays:
 			if 'c' + str(i).zfill(3) in array:
 				to_denoise.append(array)
+		print(f'to_denoise is {to_denoise}')	
 		for array in to_denoise:
 			data = zarr.open_array(array)
 			denoised_data = n2v_denoise(data=data,
@@ -37,16 +39,9 @@ def split_nd(img_dir, img_name, channel_list, model_base_dir, project=True):
 			root.array(name=f'{basename(array)}_n2v', data=denoised_data)
 	stack_paths = stack_images(imgs=temp_path, dims=dims, keep_imgs=False)	
 	for path in stack_paths:
-		print(f'project is set to {project}')
-		print(type(project))
 		tif_path = zarr_to_tif(zarr_file=path, keep_img=False)
-		print(tif_path)
 		if project == True:
-			print('True')
-			print(tif_path)
 			project_image(tif_path)
-		else:
-			print('NO')
 	shutil.rmtree(tcz_path)
 
 def n2v_denoise(data, img_dir, img_name, model_base_dir, channel, plotInputPredict=False):

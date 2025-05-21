@@ -30,7 +30,7 @@ def trainModel_n2v(image_dir,channel_name, model_base_name='n2v_3D_CREST_'):
 	# We will load all the '.tif' files from the 'data' directory. In our case it is only one.
 	# The function will return a list of images (numpy arrays).
 	# In the 'dims' parameter we specify the order of dimensions in the image files we are reading.
-	imgs = datagen.load_imgs_from_directory(directory = image_dir+'/n2v_denoise/training/'+channel_name+'/', dims='ZYX')
+	imgs = datagen.load_imgs_from_directory(directory = os.path.join(image_dir,'n2v_denoise','training',channel_name), dims='ZYX')
 
 	# Let's look at the shape of the image
 	print(imgs[0].shape)
@@ -58,7 +58,7 @@ def trainModel_n2v(image_dir,channel_name, model_base_name='n2v_3D_CREST_'):
 	# a name used to identify the model
 	model_name = model_base_name+channel_name
 	# the base directory in which our model will live
-	modelDir = image_dir+'/n2v_denoise/training/models'
+	modelDir = os.path.join(image_dir,'n2v_denoise','training','models')
 	# We are now creating our network model.
 	model = N2V(config=config, name=model_name, basedir=modelDir)
 
@@ -68,7 +68,7 @@ def trainModel_n2v(image_dir,channel_name, model_base_name='n2v_3D_CREST_'):
 	print(sorted(list(history.history.keys())))
 	plt.figure(figsize=(16,5))
 	plot_history(history,['loss','val_loss'])
-	plt.savefig(image_dir + '/n2v_denoise/training/' + channel_name +  '/trainingValidationLoss_' + model_name + '.png')
+	plt.savefig(os.path.join(image_dir, 'n2v_denoise','training',channel_name,'trainingValidationLoss_' + model_name + '.png'))
 
 	#Export Model in BioImage ModelZoo Forma
 	model.export_TF(name='Noise2Void-3DCREST-'+channel_name, 
@@ -87,7 +87,7 @@ def setupDirsForTraining(image_dir,channel_name):
 	'''
 	# create a folder for our data
 	os.chdir(image_dir)
-	train_dir=os.path.join(image_dir,'n2v_denoise/training',channel_name)
+	train_dir=os.path.join(os.path.join(image_dir,'n2v_denoise','training',channel_name))
 	if not os.path.isdir(train_dir):
 		os.mkdir(train_dir,parents=True, exist_ok=True)
 		print("created "+train_dir)
